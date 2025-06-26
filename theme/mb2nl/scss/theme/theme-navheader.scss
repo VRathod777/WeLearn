@@ -1,0 +1,66 @@
+
+.tnavheader {
+
+
+    /* Page header */
+
+    #page-header {
+        .flexcols {
+            min-height: 20px;
+        }
+    }
+
+    #main-header {
+        --mb2-pb-mbtncolor: var(--mb2-pb-navcolor);
+        --mb2-qlinksbtnc: var(--mb2-pb-navcolor);
+    }
+
+    @media only screen and (min-width: $wdmediumdevice + 1){
+
+        &.hnavpos2 {
+            #master-header:not(.sticky-el) {
+                --mb2mm-mtb: .8rem;
+            }
+    
+            .hnav2-wrap {
+                margin-top: var(--mb2mm-mtb);
+                gap: .65rem;
+            }		
+        }
+
+        /* Header tools */
+
+        .header-tools {
+
+            &.tools-pos2 {
+                .header-tools-link:not(.loginbtn),
+                .popover-region-toggle {
+                    color: var(--mb2-pb-navcolor);
+                }
+
+                &.hnavtype2 {
+                    .header-tools-link:not(.loginbtn),
+                    .popover-region-toggle {
+                        max-width: none;
+                    }
+                }
+
+            }
+
+        }
+
+        &.hnavpos1 {
+            .header-tools {
+                &.tools-pos2 {
+                    @media only screen and (max-width: $wdlargedevice){
+                        .text1 {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+}

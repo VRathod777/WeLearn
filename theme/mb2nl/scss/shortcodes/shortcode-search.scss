@@ -1,0 +1,88 @@
+
+.mb2-pb-search {
+    margin-left: auto;
+    margin-right: auto;
+
+    --mb2-pb-searchbg: #fff;
+    --mb2-pb-searchcolor: var(--mb2-pb-textcolor);
+    --mb2-pb-searchbcolor: rgba(0,0,0,.1);
+    --mb2-pb-searchh: 3.7rem;
+    --mb2-pb-searchfs: 1.25rem;
+    --mb2-pb-searchp: 1rem;
+    --mb2-pb-searchbtnw: calc(var(--mb2-pb-searchh) + 2rem);
+    --mb2-pb-searchbtnfs: 1.6rem;
+    --mb2-pb-searchbw: 1px;
+
+    form {
+        background-color: var(--mb2-pb-searchbg);
+        border-radius: .22rem;
+    }
+
+    &.border1 {
+        form {
+            border: solid var(--mb2-pb-searchbw) var(--mb2-pb-searchbcolor);
+            padding: 2px;
+        }
+
+        button {
+            border-radius: .22rem;
+        }
+    }
+
+    input[type="text"],
+    button {
+        line-height: 1;
+        height: var(--mb2-pb-searchh);
+    }
+
+    input[type="text"] {
+        @include mb2_border_radius(.22rem 0 0 .22rem);
+        border: 0;
+        padding: 0 var(--mb2-pb-searchp);
+        width: calc(100% - var(--mb2-pb-searchbtnw));
+        flex: 0 0 calc(100% - var(--mb2-pb-searchbtnw));
+        font-size: var(--mb2-pb-searchfs);
+        background-color: transparent;
+        color: var(--mb2-pb-searchcolor) !important;
+
+        &::placeholder {
+            color: color-mix(in srgb, var(--mb2-pb-searchcolor) 60%, transparent);
+        }
+    }
+
+    button {
+        border: 0;
+        @include mb2_border_radius(0 .22rem .22rem 0);
+        width: var(--mb2-pb-searchbtnw);
+        flex: 0 0 var(--mb2-pb-searchbtnw);
+        font-size: var(--mb2-pb-searchbtnfs);
+    }
+
+    &.rounded-1 {
+        form,
+        input[type="text"],
+        button {
+            border-radius: 0 !important;
+        }
+    }
+
+    &.rounded1 {
+        form,
+        input[type="text"],
+        button {
+            border-radius: 999px;
+        }
+    }
+
+    &.sizes {
+        --mb2-pb-searchh: 2.5rem;
+        --mb2-pb-searchfs: 1rem;
+        --mb2-pb-searchbtnfs: 1.25rem;
+    }
+
+    &.sizel {
+        --mb2-pb-searchh: 4.5rem;
+        --mb2-pb-searchbtnfs: 1.8rem;
+    }
+
+}

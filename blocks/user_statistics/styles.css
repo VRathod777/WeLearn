@@ -1,0 +1,70 @@
+.user_statistics {
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.user_statistics .dashboard-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+.user_statistics .card {
+    flex: 1 1 180px;
+    max-width: 220px;
+    min-width: 150px;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 12px;
+    color: #ffffff;
+    
+    background: linear-gradient(135deg, #4e73df, #2e59d9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out;
+}
+
+.user_statistics .card:hover {
+    transform: translateY(-4px);
+}
+
+.user_statistics .card .count {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.user_statistics .card .label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Color variants */
+.user_statistics .card.blue {
+    background: linear-gradient(135deg, #4e73df, #2e59d9);
+}
+.user_statistics .card.orange {
+    background: linear-gradient(135deg, #f6c23e, #dda20a);
+}
+.user_statistics .card.purple {
+    background: linear-gradient(135deg, #6f42c1, #5a32a3);
+}
+.user_statistics .card.green {
+    background: linear-gradient(135deg, #1cc88a, #17a673);
+}
+.user_statistics .card.red {
+    background: linear-gradient(135deg, #e74a3b, #c0392b);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+    .user_statistics .dashboard-metrics {
+        flex-direction: column;
+        align-items: center;
+    }
+    .user_statistics .card {
+        width: 90%;
+    }
+}

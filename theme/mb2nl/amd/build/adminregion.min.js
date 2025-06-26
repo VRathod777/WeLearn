@@ -1,0 +1,6 @@
+/**
+ *
+ * @package   theme_mb2nl
+ * @copyright 2017 - 2025 Mariusz Boloz (lmsstyle.com)
+ * @license   PHP and HTML: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later. Other parts: http://themeforest.net/licenses
+ */ define(["jquery","theme_mb2nl/userpreference","theme_mb2nl/str"],function(e,n,t){return{toggleBtn:function(){e(".toggle-adminblock").length||(e(".main-footer").find(".mb2-pb-row-inner").length?e(".main-footer").find(".mb2-pb-row-inner").last().append(adminregionbtn):e(".main-footer").append(adminregionbtn)),e(document).on("click",".toggle-adminblock",function(){var a=e("#adminblock-region");a.hasClass("open")?(a.removeClass("open"),a.addClass("close"),e(this).attr("aria-expanded","false"),e(this).attr("aria-label",t.get_str("showadminblocks")),e(this).text(t.get_str("showadminblocks")),n.sePreference("mb2_adminregion",0)):(a.removeClass("close"),a.addClass("open"),e(this).attr("aria-expanded","true"),e(this).attr("aria-label",t.get_str("hideadminblocks")),e(this).text(t.get_str("hideadminblocks")),n.sePreference("mb2_adminregion",1))})}}});

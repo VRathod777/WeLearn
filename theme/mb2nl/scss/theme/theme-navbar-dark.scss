@@ -1,0 +1,48 @@
+
+
+/* Header tools */
+
+.tnavbar_dark {
+
+    .top-bar {
+        --mb2-topbarbg: var(--mb2-pb-tbbgcolor);
+
+        &:not(.light) {
+            color: #fff;
+        }
+
+    }
+
+    &.tnavbar {
+        #main-header {
+			--mb2-pb-mbtncolor: #fff;
+            --mb2-qlinksbtnc: #fff;
+		}
+    }
+
+    @media only screen and (min-width: $wmediumdevice){
+
+        .header-tools {
+            &.tools-pos1 {
+
+                .header-tools-link,
+                .popover-region-toggle {
+                    background-color: rgba(255,255,255,.1);
+                }
+
+            }
+
+            &.tools-pos2 {
+                .header-tools-link:not(.loginbtn),
+                .popover-region-toggle {
+                    color: #fff;
+                }
+            }
+        }
+
+    }
+
+}
+
+
+

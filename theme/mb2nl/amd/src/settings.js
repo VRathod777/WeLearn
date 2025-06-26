@@ -1,0 +1,6 @@
+/**
+ *
+ * @package   theme_mb2nl
+ * @copyright 2017 - 2025 Mariusz Boloz (lmsstyle.com)
+ * @license   PHP and HTML: http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later. Other parts: http://themeforest.net/licenses
+ */ define(["jquery","theme_mb2nl/str"],function(s,t){return{toggleAll:function(){s(document).on("click",".ts-toggleall",function(){var e=s(this).closest(".ts_container").find(".ts_jsontent"),a=s(this).closest(".ts_container").find(".ts_togglejs");s(this).hasClass("collapsed")?(s(this).removeClass("collapsed"),s(this).text(t.get_str("collapseall")),s(this).attr("aria-expanded","true"),e.removeClass("d-none"),a.removeClass("collapsed")):(s(this).addClass("collapsed"),s(this).text(t.get_str("expandall")),s(this).attr("aria-expanded","false"),e.addClass("d-none"),a.addClass("collapsed"))})},toggleCat:function(){s(document).on("click",".ts_togglejs",function(){var t=s(this).closest(".ts_cheader").siblings();s(this).hasClass("collapsed")?(s(this).removeClass("collapsed"),s(this).attr("aria-expanded","true"),t.removeClass("d-none")):(s(this).addClass("collapsed"),s(this).attr("aria-expanded","false"),t.addClass("d-none"))})}}});

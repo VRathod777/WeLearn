@@ -1,0 +1,9 @@
+mtrem,local_mb2builder
+toppixel,local_mb2builder
+widthpercentage,local_mb2builder
+ptlabelrem,local_mb2builder
+pblabelrem,local_mb2builder
+leftpercentage,local_mb2builder
+hpospercentage,local_mb2builder
+gap,local_mb2builder
+rowtextsize,local_mb2builder

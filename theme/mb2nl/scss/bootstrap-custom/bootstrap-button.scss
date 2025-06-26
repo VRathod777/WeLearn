@@ -1,0 +1,256 @@
+
+.btn,
+.button,
+[type="submit"],
+input[type="button"],
+a[data-action="addstandardtag"],
+.addresourcemodchooser a {
+
+    @include mb2_button();
+
+    & img {
+        margin-top: -2px;
+        margin-right: 5px;
+    }
+
+    i {
+        color: inherit !important;
+    }
+
+}
+
+button,
+[type="button"] {
+    &:hover,
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn-primary,
+[type="submit"],
+input.btn-primary,
+button.btn-primary {
+    @include button-variant($btnprimarycolor, $btnprimarycolor);
+}
+
+@each $color, $value in $themecolors {
+    .btn-outline-#{$color} {
+      @include button-outline-variant($value);
+    }
+}
+
+@each $color, $value in $themecolors {
+    .btn-#{$color} {
+        @include button-variant($value, $value);
+    }
+}
+
+.btn-clear {
+    @include button-variant(transparent, transparent);
+}
+
+.btn-danger,
+.fp-file-delete {
+      @include button-variant($color_danger, $color_danger);
+}
+
+@media only screen and (min-width: $wmediumdevice + 1){
+    .btn-xlg {
+        @include mb2_button_size(.9rem, 2rem, 1.3rem, var(--mb2-btn-radius));
+    }
+    
+    .btn-lg {
+        @include mb2_button_size(var(--mb2-btn-lg-py), var(--mb2-btn-lg-px), var(--mb2-btn-fsize-lg), var(--mb2-btn-radius));
+    }
+}
+
+.btn-sm {
+    @include mb2_button_size(var(--mb2-btn-sm-py), var(--mb2-btn-sm-px), $fssmall, var(--mb2-btn-radius));
+}
+
+.btn-xs {
+    @include mb2_button_size(var(--mb2-btn-xs-py), var(--mb2-btn-xs-px), $fssmall, var(--mb2-btn-radius));
+}
+
+
+.loading {
+    .loading-icon {
+        display: inline-block;
+    }
+}
+
+
+.addresourcemodchooser a,
+#changenumsections .add-sections {
+    @include mb2_button();
+    @include button-variant($color_success, $color_success);
+    @include mb2_button_size(var(--mb2-btn-sm-py), var(--mb2-btn-sm-px), $fssmall, var(--mb2-btn-radius));
+}
+
+
+/* Special success buttons */
+button[data-action="link-competency"],
+button[data-action="add"],
+div[data-region="plans"] .singlebutton input[type="submit"],
+.fp-file-download,
+a[data-action="addstandardtag"],
+#combinetags_submit,
+#chooserform input[type="submit"].submitbutton,
+.atto_mb2shortcodes_imgbrowser,
+.maincalendar .header .buttons .btn {
+  @include button-variant($color_success, $color_success);
+}
+
+
+
+/* Special buttons - danger */
+#tag-management-delete,
+#combinetags_cancel,
+input[type="submit"].addcancel {
+  @include button-variant($color_danger, $color_danger);
+}
+
+
+/* Button link */
+
+.btn.btn-link:not(.activityiconcontainer),
+.btn-link:not(.activityiconcontainer) {
+    @include mb2_btn_link();
+}
+
+
+/* Set button margins */
+
+.btn {
+    + .btn:not(.fw1):not(.btn-block):not(.link-replace) {
+        margin-left: .45rem;
+    }
+
+    .btn-group & {
+        + .btn {
+            margin-left: 0 !important;
+        }
+    }
+
+    &.text-reset {
+        border: 0 !important;
+        background-color: transparent !important;
+        border-radius: 0;
+    }
+}
+
+
+.activity-information [data-region="completion-info"] {
+    .btn {
+        @include mb2_button_size(var(--mb2-btn-sm-py), var(--mb2-btn-sm-px), $fssmall, var(--mb2-btn-radius));
+    }
+}
+
+/* Reset button style */
+
+
+button {
+
+    /* ======================= ACCESSIBILITY STYLE */
+
+    [class*="acsb_textspacing"] & {
+        word-spacing: inherit;
+        letter-spacing: inherit;
+    }
+
+    [class*="acsb_lineheight"] &:not(.tgsdb-btn):not(.theme-scrolltt):not(.close) {
+        line-height: inherit !important;
+    }	
+
+    &.themereset {
+        border: 0;	  	
+          margin: 0;
+          background-color: transparent;
+        font-weight: inherit;
+
+        &:not([data-toggle="collapse"]):not(.mb2mm-action):not(.mb2mm-mega-action):not(.theme-scrolltt):not(.swiper-button-nav) {
+            @include mb2_transition_none();
+        }
+
+    }
+
+    .theme-course-search &,
+    .theme-searchform & {
+        @include mb2_transition_none();
+    }
+}
+
+
+
+
+
+.btn-icon {
+    .dropdown > & {
+        @include mb2_btn_moodle_icon();
+    }
+
+    text-decoration: none;
+
+    .icon-no-margin {
+        margin: 0 !important;
+    }
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collapsed-icon {
+    margin: 0 !important;
+
+    * {
+        display: inline-flex;
+        justify-content: center;
+    }
+}
+
+/* Moodle 4 */
+
+.footer-tools {
+    button {
+        @include mb2_button();
+        @include button-variant($btnprimarycolor, $btnprimarycolor); 
+        @include mb2_button_size(var(--mb2-btn-sm-py), var(--mb2-btn-sm-px), $fssmall, var(--mb2-btn-radius));
+    }
+}
+
+
+
+.css_31a2 {
+
+    .btn.toggle-card-button {
+        padding: .4rem .6rem;
+        line-height: 1;
+    }
+    
+    i.toggle-card-icon {
+        font-size: 1.25em !important;
+    }
+}
+
+table .btn.toggle-category {
+    border: solid 1px rgba(0,0,0,.1) !important;
+    color: inherit !important;
+    background-color: transparent !important;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none !important;
+}
+
+.my-action-buttons {
+
+    width: 100%;
+    flex-flow: wrap;
+
+    .btn {
+        color: #fff;
+        margin: 0 !important;
+    }
+}

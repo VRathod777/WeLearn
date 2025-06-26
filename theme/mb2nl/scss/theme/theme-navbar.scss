@@ -1,0 +1,74 @@
+
+.tnavbar {
+
+    &:not(.tnavbar_light2) {
+        #main-header {
+            --mb2-pb-navcolor: #fff;
+            --mb2-pb-navhcolor: #fff;
+            --mb2-pb-mbtncolor: var(--mb2-pb-headingscolor);
+            --mb2-qlinksbtnc: var(--mb2-pb-headingscolor);
+            --mb2-pb-navsepcolor: color-mix(in srgb, var(--mb2-pb-navcolor) 20%, transparent);
+        }
+    }
+
+    #main-navigation {
+        
+        .main-navigation-inner {
+            @media only screen and (min-width: $wdmediumdevice + 1){
+                background-color: var(--mb2-pb-navbarbgcolor);
+            }
+        }
+    }
+
+
+    /* This is require for search button in the navigation bar */
+    &.searchnav {
+
+        .tool-search {
+            display: none;
+        }
+
+        @media only screen and (min-width: $wdmediumdevice + 1){
+
+            .main-navigation-inner {
+                > div > div > div {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .header-tools {
+                margin-left: auto;
+            }
+
+            .tool-search {
+                display: inline-flex;
+                align-items: center;
+                gap: .95rem;
+                color: var(--mb2-pb-navcolor);
+                height: var(--mb2mm-mitemheight);
+
+                i {
+                    order: 2;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: scale(1.9);
+                }
+            }
+
+        }
+
+
+    }
+
+    .tools-pos2 {
+        .header-tools-link:not(.loginbtn),
+        .popover-region-toggle {
+            color: var(--mb2-pb-headingscolor);
+            max-width: none !important;
+        }
+    }
+
+
+}

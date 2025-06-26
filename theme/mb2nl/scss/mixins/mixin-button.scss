@@ -1,0 +1,136 @@
+
+
+@mixin mb2_nobtn() {
+    padding: 0;
+    border: 0;
+    background-color: transparent !important;
+    font-weight: inherit;
+    box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+
+@mixin mb2_btn_link() {
+    background-color: transparent !important;
+    color: inherit !important;
+    border: 0 !important;
+    transition: color 0.15s ease-in-out;
+    @include mb2_box_shadow_none();
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $linkcolor !important;
+    }
+
+    &.isicon0 {
+        .btn-intext {
+            &:after {
+                @include mb2_font_fa();
+                content: '\f105';
+                margin-left: .45rem;
+                transform: scale(1.35);
+            }
+        }
+    }
+
+}
+
+// Button sizes
+@mixin mb2_button_size($padding-y, $padding-x, $font-size, $border-radius) {
+    padding: $padding-y $padding-x;
+    @include font-size($font-size);
+    // Manually declare to provide an override to the browser default
+    @include border-radius($border-radius, 0);
+}
+
+
+@mixin mb2_button() {
+
+    --mb2-btn-bw: 1px;
+
+    font-size: var(--mb2-btn-fsize);
+    font-weight: var(--mb2-pb-fwmedium);
+    @include mb2_button_size(var(--mb2-bs-btn-py), var(--mb2-btn-px), $fsgeneral, var(--mb2-btn-radius));
+    line-height: $lhheadings;
+    border-width: var(--mb2-btn-bw);
+    @include mb2_box_shadow_none();
+
+    &:focus {
+        outline: .2rem solid transparent;
+    }
+
+}
+
+
+
+@mixin mb2_btn_moodle_icon() {
+
+    @include mb2_box_shadow_none();
+    @include mb2_transition_none();
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 0 !important;
+    color: var(--mb2-pb-headingscolor) !important;
+
+    span {
+        padding: 0 !important;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: var(--mb2-pb-headingscolor) !important;
+        background-color: rgba(0,0,0,.07) !important;
+    }
+
+    &.mr-1 {
+        margin-right: 1rem !important;
+    }
+
+    &.icons-collapse-expand {
+        background-color: rgba(0,0,0,.07) !important;
+
+        &:hover {
+            outline-color: rgba(0,0,0,.1);
+            outline-width: 1px;
+        }
+    }
+
+    .fa-chevron-down,
+    .fa-chevron-right,
+    .fa-chevron-left {
+        &:before {
+            @include mb2_font_bootstrapicons();
+        }
+
+        &.icon {
+            width: auto !important;
+            height: auto !important;
+            font-size: 1.25rem;
+        }
+    }
+
+    .fa-chevron-down {
+        &:before {
+            content: '\f282';
+        }
+    }
+
+    .fa-chevron-right {
+        &:before {
+            content: '\f285';
+        }
+    }
+
+
+    .fa-chevron-left {
+        &:before {
+            content: '\f284';
+        }
+    }
+
+}

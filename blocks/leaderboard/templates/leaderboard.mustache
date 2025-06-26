@@ -1,0 +1,20 @@
+
+    <table class="badge-leaderboard">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Badges</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#users}}
+            <tr>
+                <td>{{rank}}.</td>
+                <td>{{fullname}}</td>
+                <td>{{{badgeicons}}}</td>
+            </tr>
+            {{/users}}
+        </tbody>
+    </table>
+

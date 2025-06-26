@@ -1,0 +1,105 @@
+
+a,
+button,
+[type="submit"],
+input,
+textarea,
+.nav-link {
+    outline: none;
+}
+
+.themefocused {
+    outline: none !important;
+
+    &:focus	 {
+        @include mb2_box_shadow(0 0 0 3px, $linkcolor !important);
+    }
+}
+
+.themekeynavonly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &.themefocused:focus {
+        position: relative;
+        width: auto;
+        height: auto;
+        margin: 0;
+        background-color: #fff;
+        color: var(--mb2-pb-headingscolor);
+        @include mb2_box_shadow(0 0 0 3px, $linkcolor);
+    }
+}
+
+.visually-hidden-focusable,
+.sr-only-focusable {
+
+    &:after {
+        @include mb2_font_bootstrapicons();
+        content: '\f131';
+    }
+
+    .dir-rtl & {
+        &:after {
+            transform: scaleX(-1);
+        }
+    }
+
+    &:active,
+    &:focus {
+        position: absolute;
+        z-index: 99999999999999;
+        display: inline-flex;
+        align-items: center;
+        gap: .8rem;
+        background-color: #fff !important;
+        color: #000 !important;
+        @include mb2_box_shadow(0 0 0 5px, $linkcolor);
+        top: 25px;
+        left: 25px;
+        border-radius: 6px;
+        padding: 7px 13px;
+        font-size: 1.35rem;
+        font-weight: var(--mb2-pb-fwheadings);
+    }
+
+}
+
+
+
+
+/* HIDE/SHOW SOME SKIP LINKS RELATED TO THE SCREEN WIDTH */
+
+[href="#themeskipto-mobilenav"] {
+    display: none;
+}
+
+@media only screen and (max-width: $wmediumdevice){
+    [href="#themeskipto-search"],
+    [href="#main-navigation"] {
+        display: none;
+    }
+
+    [href="#themeskipto-mobilenav"] {
+        display: block;
+    }
+}
+
+/* Hide accessibility block to prevent display unstyled block after enable */
+
+.acsb-block {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.acsb-trigger {
+    position: fixed;
+    width: 0;
+    height: 0;
+    border: 0;
+}
