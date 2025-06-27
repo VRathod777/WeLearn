@@ -1,0 +1,53 @@
+# === MOODLE CORE IGNORE FILES ===
+
+# Moodle's config file – contains DB credentials
+config.php
+
+# Moodledata directory – NEVER store this in Git
+moodledata/
+
+# Caches and temp directories
+cache/
+localcache/
+sessions/
+temp/
+trashdir/
+
+# SCSS, compiled CSS or JS output (if any)
+/theme/*/style/*.css
+/theme/*/javascript/*.js
+/theme/*/javascript/build/
+
+# Build artifacts
+/build/
+
+# Composer vendor directory (if used)
+vendor/
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# OS-specific/system files
+.DS_Store
+Thumbs.db
+
+# IDE/editor specific
+*.swp
+*.bak
+*.tmp
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Grunt/PHPUnit or testing junk
+phpunit.xml
+phpunit.xml.dist
+testoutput/
+
+# Backup files
+*.mbz
+*.bak
