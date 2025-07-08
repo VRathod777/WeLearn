@@ -29,6 +29,7 @@
  * Method to display site menu links
  *
  */
+
 function theme_mb2nl_is_site_menu()
 {
 
@@ -39,7 +40,29 @@ function theme_mb2nl_is_site_menu()
     return false;
 
 }
+// function theme_mb2nl_sidebar_menu_items() {
+//     global $PAGE;
 
+//     $output = '';
+
+//     // STEP 1: Logo URL fetch karo
+//     $theme = theme_config::load('mb2nl');
+//     $logourl = $theme->setting_file_url('logo', 'logo');
+
+//     // STEP 2: Agar logo mila to HTML me daalo
+//     if (!empty($logourl)) {
+//         $output .= '<div class="text-center p-3 drawer-logo">';
+//         $output .= '<img src="' . $logourl . '" alt="Site Logo" style="max-height: 60px;">';
+//         $output .= '</div>';
+//     }
+
+//     // STEP 3: Ab sidebar menu items ya list continue karo
+//     $output .= '<ul class="list-unstyled">';
+//     // ... rest of your menu items
+//     $output .= '</ul>';
+
+//     return $output;
+// }
 
 
 /**
@@ -115,7 +138,7 @@ function theme_mb2nl_site_menu(bool $mobile = false): ?string {
             true
         );
     }
-
+ 
     /* --------------------------------------------------------------------
      * Close the <ul> (and desktop wrapper, if any), then return
      * ------------------------------------------------------------------ */
@@ -505,418 +528,3 @@ function theme_mb2nl_turnediting_button_atts($icon = false)
     }
 
 }
-
-/**
- *
- * Method to display site menu item
- *
- *
- */
-// function theme_mb2nl_sidebar_menu_items()
-// {
-
-//     global $COURSE, $CFG, $PAGE, $DB, $USER, $SITE;
-
-//     $curentcat = optional_param('categoryid', 0, PARAM_INT);
-//     $iscourse = theme_mb2nl_is_course();
-
-//     if ($curentcat) {
-//         $context = context_coursecat::instance($curentcat);
-//     } else if ($iscourse) {
-//         $context = context_course::instance($COURSE->id);
-//     } else {
-//         $context = context_system::instance();
-//     }
-
-//     // Check if is frontpage.
-//     $isfp = $PAGE->pagetype === 'site-index';
-//     $isds = $PAGE->pagelayout === 'mycourses' ? true : $PAGE->pagetype !== 'my-index';
-
-//     // Check if is page added to the front page.
-//     $isfpage = ($PAGE->pagetype === 'mod-page-view' && $COURSE->id == $SITE->id);
-
-//     // Check if is course page or admin pages.
-//     $showmanage = (
-//         $PAGE->pagetype === 'site-index' ||
-//         $PAGE->pagetype === 'course-index' ||
-//         $PAGE->pagetype === 'course-index-category' ||
-//         $PAGE->pagetype === 'my-index');
-
-//     $items = [
-//         'buildpage' => [],
-//         // 'frontpage' => [
-//         //     'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//         //     'course' => true,
-//         //     'shown' => !$isfp,
-//         //     'icon' => 'ri-home-line',
-//         //     'text' => get_string('sitehome'),
-//         //     'link' => new moodle_url('/', ['redirect' => 0]),
-//         // ],
-//         'dashboard' => [
-//             'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//             'course' => true,
-//             'shown' => $isds,
-//             'icon' => 'ri-dashboard-line',
-//             'text' => get_string('myhome'),
-//             'link' => new moodle_url('/my'),
-//         ],
-//         'mycourses' => [
-//             'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//             'course' => true,
-//             'shown' => $PAGE->pagelayout !== 'mycourses',
-//             'icon' => 'ri-graduation-cap-line',
-//             'text' => get_string('mycourses'),
-//             'link' => new moodle_url('/my/courses.php'),
-//         ],
-//         'courses' => [
-//             'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//             'course' => true,
-//             'shown' => $isds,
-//             'icon' => 'ri-book-2-line',
-//             'text' => get_string('fulllistofcourses'),
-//             'link' => new moodle_url('/course'),
-//         ],
-
-//         'addcourse' => [
-//             'access' => ['admin', 'manager', 'coursecreator'],
-//             'course' => true,
-//             'icon' => 'ri-add-line',
-//             'text' => get_string('createnewcourse'),
-//             'link' => theme_mb2nl_addcourse_url(),
-//         ],
-//         'addcategory' => [
-//             'access' => ['admin', 'manager'],
-//             'course' => true,
-//             'icon' => 'ri-folder-add-line',
-//             'text' => get_string('createnewcategory'),
-//             'link' => new moodle_url('/course/editcategory.php', ['parent' => 1]),
-//         ],
-//         // 'managecourses' => [
-//         //     'access' => ['admin', 'manager'],
-//         //     'course' => true,
-//         //     'icon' => 'ri-folder-settings-line',
-//         //     'text' => get_string('managecourses'),
-//         //     'link' => new moodle_url('/course/management.php'),
-//         // ],
-//         'courses' => [
-//             'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator',],
-//             'course' => true,
-//             'icon' => 'ri-book-2-line',
-//             'text' => get_string('fulllistofcourses'),
-//             'link' => "#",
-//             'submenu' => [
-//                 'coursecatalog' => [
-//                     'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator',],
-//                     'course' => true,
-//                     'shown' => $isds,
-//                     'icon' => 'ri-book-2-line',
-//                     'text' => get_string('coursecatalog', 'theme_mb2nl'),
-//                     'link' => new moodle_url('/course/'),
-//                 ],
-//                 'addcourse' => [
-//                     'access' => ['admin', 'manager', 'coursecreator'],
-//                     'course' => true,
-//                     'icon' => 'ri-add-line',
-//                     'text' => get_string('createnewcourse'),
-//                     'link' => theme_mb2nl_addcourse_url(),
-//                 ],
-
-//                 'managecoursesandcats' => [
-//                     'access' => ['admin', 'manager'],
-//                     'course' => true,
-//                     'shown' => $showmanage,
-//                     'icon' => 'ri-folder-settings-line',
-//                     'text' => get_string('managecourses'),
-//                     'link' => new moodle_url('/course/management.php'),
-//                 ],
-//                 'addcategory' => [
-//                     'access' => ['admin', 'manager'],
-//                     'course' => true,
-//                     'icon' => 'ri-folder-add-line',
-//                     'text' => get_string('createnewcategory'),
-//                     'link' => new moodle_url('/course/editcategory.php', ['parent' => 1]),
-//                 ],
-//             ],
-//         ],
-
-//         // 'mycourses' => [
-//         //     'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//         //     'course' => true,
-//         //     'shown' => $PAGE->pagelayout !== 'mycourses',
-//         //     'icon' => 'ri-graduation-cap-line',
-//         //     'text' => get_string('mycourses'),
-//         //     'link' => new moodle_url('/my/courses.php'),
-//         // ],
-//         // 'learningJourney' => [
-//         //     'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//         //     'course' => true,
-//         //     'shown' => $PAGE->pagelayout !== 'learningJourney',
-//         //     'icon' => 'ri-graduation-cap-line',
-//         //     'text' => get_string('learningJourney', 'theme_mb2nl'),
-//         //     'link' => new moodle_url('/my/courses.php'),
-//         //     ],
-//         // 'sociallearning' => [
-//         //     'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//         //     'course' => true,
-//         //     'shown' => $PAGE->pagelayout !== 'sociallearning',
-//         //     'icon' => 'ri-graduation-cap-line',
-//         //     'text' => get_string('sociallearning', 'theme_mb2nl'),
-//         //     'link' => new moodle_url('/my/courses.php'),
-//         //     ],
-
-//         'achievements' => [
-//             'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//             'course' => true,
-//             'shown' => $PAGE->pagelayout !== 'achievements',
-//             'icon' => 'ri-graduation-cap-line',
-//             'text' => get_string('achievements', 'theme_mb2nl'),
-//             'link' => "#",
-//             'submenu' => [
-//                 'Certificates' => [
-//                     'access' => ['admin', 'manager', 'coursecreator'],
-//                     'course' => true,
-//                     'icon' => 'ri-graduation-cap-line',
-//                     'text' => get_string('certificates', 'theme_mb2nl'),
-//                     'link' => new moodle_url('/local/external_certificate'),
-//                 ],
-//                 'badges' => [
-//                     'access' => ['admin', 'manager', 'coursecreator'],
-//                     'course' => true,
-//                     'icon' => 'ri-graduation-cap-line',
-//                     'text' => get_string('badges', 'theme_mb2nl'),
-//                     'link' => new moodle_url('/badges/mybadges.php'),
-//                 ],
-//             ],
-//         ],
-//         // 'calendar' => [
-//         //     'access' => ['admin', 'manager', 'editingteacher', 'teacher', 'coursecreator', 'student', 'user'],
-//         //     'course' => true,
-//         //     'icon' => 'ri-calendar-2-line',
-//         //     'text' => get_string('calendar', 'calendar'),
-//         //     'link' => new moodle_url('/calendar/view.php', ['view' => 'month']),
-//         // ],
-
-//         // 'contentbank' => [
-//         //     'access' => [],
-//         //     'cap' => has_capability('moodle/contentbank:access', $context),
-//         //     'course' => true,
-//         //     'shown' => $PAGE->pagetype !== 'contentbank',
-//         //     'icon' => 'ri-bank-line',
-//         //     'text' => get_string('contentbank'),
-//         //     'link' => new moodle_url('/contentbank/index.php', ['contextid' => $context->id]),
-//         // ],
-//         'message' => [
-//             'access' => ['student', 'user'],
-//             'course' => true,
-//             'icon' => 'bi bi-chat-dots',
-//             'text' => get_string('message'),
-//             'link' => new moodle_url('/message/index.php', ['parent' => 1]),
-//         ],
-//         'editpage' => [
-//             'access' => ['admin', 'manager', 'editingteacher'],
-//             'course' => $isfpage,
-//             'icon' => 'ri-file-edit-line',
-//             'text' => get_string('editsettings'),
-//             'link' => isset($PAGE->cm->id) ? new moodle_url('/course/modedit.php', ['update' => $PAGE->cm->id, 'return' => 1]) :
-//                 '',
-//         ],
-//         'assignments' => [
-//             'access' => ['student', 'user'],
-//             'course' => true,
-//             'icon' => 'bi bi-file-earmark-text',
-//             'text' => get_string('assignments','theme_mb2nl'),
-//             'link' => new moodle_url('#', ['parent' => 1]),
-//         ],
-//         // 'notes' => [],
-
-//         'addcourse' => [
-//             'access' => ['admin', 'manager', 'coursecreator'],
-//             'course' => true,
-//             'icon' => 'ri-add-line',
-//             'text' => get_string('createnewcourse'),
-//             'link' => theme_mb2nl_addcourse_url(),
-//         ],
-//         'addcategory' => [
-//             'access' => ['admin', 'manager'],
-//             'course' => true,
-//             'icon' => 'ri-folder-add-line',
-//             'text' => get_string('createnewcategory'),
-//             'link' => new moodle_url('/course/editcategory.php', ['parent' => 1]),
-//         ],
-//         'editcategory' => [
-//             'access' => ['admin', 'manager'],
-//             'course' => $iscourse,
-//             'icon' => 'ri-file-settings-line',
-//             'text' => get_string('editcategorysettings'),
-//             'link' => new moodle_url('/course/editcategory.php', ['id' => $COURSE->category]),
-//         ],
-//         // 'managecoursesandcats' => [
-//         //     'access' => ['admin', 'manager'],
-//         //     'course' => true,
-//         //     'shown' => $showmanage,
-//         //     'icon' => 'ri-folder-settings-line',
-//         //     'text' => get_string('managecourses'),
-//         //     'link' => new moodle_url('/course/management.php'),
-//         // ],
-//         'addpage' => [
-//             'access' => ['admin', 'manager', 'editingteacher'],
-//             'course' => $isfpage || $isfp,
-//             'cap' => has_capability('moodle/course:manageactivities', context_course::instance($SITE->id)),
-//             'icon' => 'ri-file-add-line',
-//             'text' => get_string('addpage', 'my'),
-//             'link' => new moodle_url('/course/modedit.php', [
-//                 'add' => 'page',
-//                 'type' => '',
-//                 'course' => $SITE->id,
-//                 'section' =>
-//                     0,
-//                 'return' => 0,
-//                 'sr' => 0
-//             ]),
-//         ],
-//         'parts' => [],
-//         'settings' => [
-//             'access' => ['admin'],
-//             'course' => true,
-//             'icon' => 'ri-list-settings-line',
-//             'text' => get_string('tsettings', 'theme_mb2nl'),
-//             'link' => new moodle_url('/admin/settings.php', ['section' => 'themesetting' . theme_mb2nl_themename()]),
-//         ],
-//         $items['lmsdashboard'] = [
-//             'access' => ['admin'], // Only for admin users
-//             'course' => true, // Available on all course pages
-//             'icon' => 'ri-file-list-3-line', // Choose an icon from Remix Icon
-//             'text' => get_string('lmsdashboard', 'theme_mb2nl'), // Add this string to your language file
-//             'link' => new moodle_url('/blocks/iomad_company_admin/index.php'), // Update with the correct URL
-//         ],
-//         'admin' => [
-//             'access' => ['admin'],
-//             'course' => true,
-//             'icon' => 'ri-settings-5-line',
-//             'text' => get_string('administrationsite'),
-//             'link' => new moodle_url('/admin/search.php'),
-//         ],
-
-//     ];
-
-
-
-//     // Page builder link.
-//     if (theme_mb2nl_check_builder() && $builderlink = theme_mb2nl_builder_pagelink()) {
-//         $items['buildpage'] = [
-//             'access' => ['admin'],
-//             'course' => !empty($builderlink),
-//             'cap' => has_capability('local/mb2builder:managepages', context_system::instance()),
-//             'icon' => 'ri-magic-line',
-//             'text' => theme_mb2nl_builder_has_page() ? get_string('editpage', 'local_mb2builder') :
-//                 get_string('buildepage', 'local_mb2builder'),
-//             'link' => new moodle_url('/local/mb2builder/edit-page.php', $builderlink),
-//         ];
-//     }
-
-//     // Content parts.
-//     if (file_exists($CFG->dirroot . '/local/mb2builder/parts.php')) {
-
-//         // $items['parts'] = [
-//         //     'access' => [],
-//         //     'cap' => has_capability('local/mb2builder:manageparts', $context),
-//         //     'course' => true,
-//         //     'icon' => 'ri-function-add-line',
-//         //     'text' => get_string('parts', 'local_mb2builder'),
-//         //     'link' => new moodle_url('/local/mb2builder/parts.php', ['contextid' => $context->id]),
-//         // ];
-//     }
-
-//     return $items;
-// }
-
-// function theme_left_navigation()
-// {
-//     global $USER, $PAGE, $COURSE, $PAGE, $OUTPUT;
-//     $menuitems = theme_mb2nl_sidebar_menu_items();
-//     $courseaccess = theme_mb2nl_site_access();
-//     $loadinglogo = theme_mb2nl_theme_setting($PAGE, 'loadinglogo', '', true);
-//     $excludedlinks = explode(',', theme_mb2nl_theme_setting($PAGE, 'excludedlinks'));
-
-//     $output = '<aside id="sidebar-wrapper"><nav class="sidebar">
-//             <div>
-//             <div class="text">';
-//     $output .= $OUTPUT->theme_part('logo');
-//     $output .= '</div>
-//             <div>
-//             <img src="" alt="" class="Logo">
-//             </div>
-//             </div>
-//             <ul class="p-0">';
-
-//     foreach ($menuitems as $k => $el) {
-//         if (empty($el))
-//             continue;
-
-//         $shown = isset($el['shown']) ? $el['shown'] : true;
-//         $access = isset($el['cap']) ? $el['cap'] : in_array($courseaccess, $el['access']);
-
-//         if (in_array($k, $excludedlinks) || !$access || !$el['course'])
-//             continue;
-
-//         if (isset($el['submenu'])) {
-//             $output .= '<li class="has-submenu">
-//                     <a class="feat-btn" href="#">
-//                         <i class="' . $el['icon'] . '"></i> ' . $el['text'] . ' 
-//                         <span class="fas fa-caret-down"></span>
-//                     </a>
-//                     <ul class="feat-show">';
-
-//             foreach ($el['submenu'] as $subk => $subel) {
-//                 $output .= '<li>
-//                         <a href="' . $subel['link'] . '">
-//                             <i class="' . $subel['icon'] . '"></i> ' . $subel['text'] . '
-//                         </a>
-//                     </li>';
-//             }
-
-//             $output .= '</ul></li>'; // Closing submenu and main menu item
-//         } else {
-//             $output .= '<li>
-//                     <a href="' . $el['link'] . '" class="nav-link">
-//                         <i class="' . $el['icon'] . '"></i> ' . $el['text'] . '
-//                     </a>
-//                 </li>';
-//         }
-//     }
-
-//     $output .= '</ul><div class="flex-grow-1"></div>';
-
-//     $output .= '<div class=" border-top mt-5">';
-//     $output .= '<ul><li class="d-flex"><a href="javascript:void(0)"><i class="fa-solid fa-pen-to-square"></i> Customize</a>';
-//     $output .= theme_mb2nl_turnediting_button();
-//     $output .= '</li>';
-//     $output .= '<li class="d-flex">' . theme_mb2nl_user_logoutlink();
-//     $output .= '</li>';
-//     $output .= '</div>
-       
-//         </nav></aside>';
-
-//     // JavaScript to toggle submenu display
-//     $output .= '<script>
-//             document.addEventListener("DOMContentLoaded", function () {
-//             let dropdownButtons = document.querySelectorAll("#sidebar-wrapper .feat-btn");
-
-//             dropdownButtons.forEach((btn) => {
-//                 btn.addEventListener("click", function (event) {
-//                     event.preventDefault();
-//                     let submenu = this.nextElementSibling;
-//                     submenu.classList.toggle("show");
-
-//                     // Toggle active class for smooth transitions
-//                     if (submenu.classList.contains("show")) {
-//                         submenu.style.display = "block";
-//                     } else {
-//                         submenu.style.display = "none";
-//                     }
-//                 });
-//             });
-//         });
-//         </script>';
-//     echo $output;
-// }
