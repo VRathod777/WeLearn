@@ -1,119 +1,79 @@
 <?php
-// This file is part of the Learning Time Tracker block for Moodle.
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * Learning Time Tracker block.
- *
- * @package    block_learningtime
- * @copyright  2023 Your Name <your@email.com>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
 class block_learningtime extends block_base {
-
-    /**
-     * Initializes the block.
-     */
     public function init() {
         $this->title = get_string('pluginname', 'block_learningtime');
     }
 
-    /**
-     * Returns the contents.
-     *
-     * @return stdClass contents of block
-     */
     public function get_content() {
-        global $CFG, $PAGE;
-    
+        global $OUTPUT, $USER, $DB;
+
         if ($this->content !== null) {
             return $this->content;
         }
-    
-        $this->content = new stdClass();
-        $this->content->text = '';
-        $this->content->footer = '';
-    
-        if (!isloggedin() || isguestuser()) {
-            return $this->content;
+       
+        // Filter dropdown selection (default: 6months)
+        $filter = optional_param('lt_filter', '6months', PARAM_ALPHA);
+
+        // Determine time range
+        if ($filter === '1year') {
+            $timefilter = time() - (365 * 24 * 60 * 60);
+        } else if ($filter === 'all') {
+            $timefilter = 0;
+        } else {
+            $filter = '6months';
+            $timefilter = time() - (180 * 24 * 60 * 60);   #days hr min sec
         }
-    
-        // Load Chart.js library.
-        $PAGE->requires->js(new moodle_url('https://cdn.jsdelivr.net/npm/chart.js'));
-        
-        // Load our JavaScript module.
-        $PAGE->requires->js_call_amd('block_learningtime/learningtime', 'init');
-        
-        // Add CSS.
-        $PAGE->requires->css('/blocks/learningtime/styles.css');
-    
-        // Create the renderable.
-        $renderable = new \block_learningtime\output\main($this->config, $this->context);
-        
-        // Get the renderer and render the content - THIS IS THE FIXED PART
-        $renderer = $this->page->get_renderer('block_learningtime');
-        $this->content->text = $renderer->render($renderable);
-    
+
+        // SQL to get daily views in time range
+        $sql = "SELECT FROM_UNIXTIME(timecreated, '%Y-%m-%d') AS day,
+                       COUNT(*) AS views
+                  FROM {logstore_standard_log}
+                 WHERE userid = ?
+                   AND eventname LIKE '%viewed%'";
+
+        $params = [$USER->id];
+
+        if ($timefilter > 0) {
+            $sql .= " AND timecreated >= ?";
+            $params[] = $timefilter;
+        }
+
+        $sql .= " GROUP BY day ORDER BY day";
+
+        $logs = $DB->get_records_sql($sql, $params);
+// print_r($logs);
+
+
+        $labels = [];
+        $values = [];
+
+        foreach ($logs as $log) {
+            $labels[] = $log->day;
+            $values[] = min(180, $log->views * 2); // 2 mins per view, max 60        
+        }
+
+        // Create chart
+        $chart = new \core\chart_line();
+        $series = new \core\chart_series(get_string('learningtime', 'block_learningtime'), $values);
+        $chart->add_series($series);
+        $chart->set_labels($labels);
+
+        // Create filter dropdown
+        $output = '<form method="get">';
+        $output .= '<select name="lt_filter" onchange="this.form.submit()">';
+        $output .= '<option value="6months"' . ($filter == '6months' ? ' selected' : '') . '>Last 6 Months</option>';
+        $output .= '<option value="1year"' . ($filter == '1year' ? ' selected' : '') . '>Last 1 Year</option>';
+        $output .= '<option value="all"' . ($filter == 'all' ? ' selected' : '') . '>All Time</option>';
+        $output .= '</select>';
+        $output .= '</form>';
+
+    //    $output .= '<div style="display: block;box-sizing: border-box;height: 349.6px;width: 578.4px;">';
+       $output .= $OUTPUT->render($chart);
+    //    $output .= '</div>';
+
+        // Set block content  line bar pie  
+        $this->content = new stdClass();
+        $this->content->text = $output;
         return $this->content;
-    }
-
-    /**
-     * Locations where block can be displayed.
-     *
-     * @return array
-     */
-    public function applicable_formats() {
-        return array(
-            'my' => true,
-            'site' => true,
-            'course-view' => true
-        );
-    }
-
-    /**
-     * Allow multiple instances of the block.
-     *
-     * @return bool
-     */
-    public function instance_allow_multiple() {
-        return false;
-    }
-
-    /**
-     * Allow configuration of the block.
-     *
-     * @return bool
-     */
-    public function instance_allow_config() {
-        return true;
-    }
-
-    /**
-     * Return the plugin config settings for external functions.
-     *
-     * @return stdClass the configs for both the block instance and plugin
-     * @since Moodle 3.8
-     */
-    public function get_config_for_external() {
-        // Return all settings for all users since it is safe (no private keys, etc..).
-        $configs = !empty($this->config) ? $this->config : new stdClass();
-
-        return (object) [
-            'instance' => $configs,
-            'plugin' => new stdClass(),
-        ];
     }
 }
