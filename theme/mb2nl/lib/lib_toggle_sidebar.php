@@ -141,13 +141,14 @@ function theme_mb2nl_tgsdb() {
 // $output .= '<div id="toggle-sidebar" class="toggle-sidebar pagelayout-a' . $cls . '" data-tgsdb_active="' . $active . '" style="' . theme_mb2nl_tgsdb_cssvar() . '">';
 $output .= '<div id="toggle-sidebar" class=" pagelayout-a' . $cls . '" data-tgsdb_active="' . $active . '" style="' . theme_mb2nl_tgsdb_cssvar() . '">';
 
-// $output .= '<div class="header-gap"></div>';
+$output .= '<div class="header-gap"></div>';
 // $output .= '<div class="sidebar-inner ' . theme_mb2nl_bsfcls(1, 'row') . '" style="background-image: linear-gradient(to bottom, var(--tgsdb_grad2) 0%, var(--tgsdb_grad1) 100%);">';
-$output .= '<div class="sidebar-inner ' . theme_mb2nl_bsfcls(1, 'row') . '" style="width: 200px;">';
+$output .= '<div class="sidebar-inner ' . theme_mb2nl_bsfcls(1, 'row') . '" style="width: 200px;position: fixed;height: 100%; ">';
 
 $output .= '<div class="sidebar-content position-relative w-100">';
 
     $output .= '<div class="sidebar-tabs">';
+    
     $output .= theme_mb2nl_tgsdb_nav();
     $output .= '<div class="sidebar-tabs-content position-absolute h-100">';
     $output .= theme_mb2nl_tgsdbtab_button();
@@ -176,9 +177,11 @@ $output .= '<div class="sidebar-content position-relative w-100">';
     $output .= '</div>'; // ...sidebar-tabs
     $output .= '<div class="sidebar-menu position-relative">';
     $output .= theme_mb2nl_site_menu(true, true);
+    
     $output .= '</div>';
     // $output .= '<div class="sidebar-footer position-relative' . theme_mb2nl_bsfcls(1, 'column', '', 'center') . '">';
-    $output .= theme_mb2nl_site_menu(true, true, true);
+    // $output .= theme_mb2nl_site_menu(true, true, true);
+    
     $output .= '</div>';
     $output .= '</div>';
     $output .= '</div>'; // ... sidebars
@@ -294,14 +297,22 @@ function theme_mb2nl_tgsdb_navitems() {
  *
  */
 function theme_mb2nl_tgsdb_nav() {
-
     global $PAGE;
 
     $output = '';
     $active = theme_mb2nl_tgsdb_active();
     $items = theme_mb2nl_tgsdb_navitems();
 
-    $output .= '<div class="sidebar-tabs-list position-relative' . theme_mb2nl_bsfcls(1, 'column', 'center') . '">';
+    $output .= '<div class="sidebar-tabs-list position-relative ' . theme_mb2nl_bsfcls(1, 'column', 'center') . '" style="background-color: #ffff;">';
+
+    // sidebarlogoupdate Add the logo before the buttons
+    $logo = theme_mb2nl_theme_setting($PAGE, 'logo');
+    if (!empty($logo)) {
+        $logourl = $PAGE->theme->setting_file_url('logo', 'logo');
+        $output .= '<div class="logo-container mb-2 text-center" style="background-color: #ffff; padding: 17px 7px 9px 6px;">';
+        $output .= '<img src="' . $logourl . '" alt="Logo" class="tgsdb-logo" style="max-height: 50px;" />';
+        $output .= '</div>';
+    }
 
     foreach ($items as $item) {
         if (!$item['show']) {
@@ -312,8 +323,8 @@ function theme_mb2nl_tgsdb_nav() {
         $expanded = $active === $item['id'] ? 'true' : 'false';
 
         $output .= '<button type="button" class="themereset tgsdb-btn p-0 ml-auto mr-auto' .
-        theme_mb2nl_bsfcls(2, 'column', 'center', 'center') . $sctivecls . '" data-id="' . $item['id'] . '" aria-controls="tgsdb_' .
-        $item['id'] . '" aria-expanded="' . $expanded . '">';
+            theme_mb2nl_bsfcls(2, 'column', 'center', 'center') . $sctivecls . '" data-id="' . $item['id'] .
+            '" aria-controls="tgsdb_' . $item['id'] . '" aria-expanded="' . $expanded . '">';
         $output .= $item['icon'];
         $output .= '<span class="label px-1 text' . theme_mb2nl_tcls('xxsmall') . '">' . $item['label'] . '</span>';
         $output .= '</button>';
@@ -323,6 +334,7 @@ function theme_mb2nl_tgsdb_nav() {
 
     return $output;
 }
+
 
 
 

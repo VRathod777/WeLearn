@@ -1,0 +1,33 @@
+.lp-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+.lp-table-wrapper.show {
+    display: block;
+}
+.progress {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 22px;
+}
+.progress-bar {
+    background-color: #28a745;
+    color: #fff;
+    height: 100%;
+    text-align: center;
+    line-height: 22px;
+    font-size: 13px;
+}
+.lp-more-btn {
+    margin-top: 10px;
+    display: inline-block;
+    cursor: pointer;
+    color: #0073aa;
+    text-decoration: underline;
+}

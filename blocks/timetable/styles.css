@@ -23,23 +23,23 @@
 
 .block_timetable .calendar_event_category .timetable-event,
 .block_timetable .calendar_event_category a {
-    color: #4e254e;
+    color: #ffffff;
 }
 
 .block_timetable .calendar_event_course .timetable-event,
 .block_timetable .calendar_event_course a {
-    color: #381400;
+    color: #f9f9f9;
 }
 
 .block_timetable .calendar_event_course {
     background-color: #fff5ee;
     border-left: 5px solid #facfb9;
-    color: #381400;
+    color: #ffffff;
 }
 
 .block_timetable .calendar_event_user .timetable-event,
 .block_timetable .calendar_event_user a {
-    color: #3e576f;
+    color: #ffffff;
 }
 
 .block_timetable .calendar_event_group {
@@ -56,6 +56,7 @@
 .block_timetable .calendar_event_user {
     background-color: #f3f4f6;
     border-left: 5px solid #ced4da;
+    color:#f2eee3;
 }
 
 .block_timetable .calendar_event_other {
@@ -87,6 +88,7 @@
     letter-spacing: .51px;
     font-weight: 600;
     font-size: small;
+    color:#0e0b0b
 }
 
 .block_timetable .event-item {
@@ -126,6 +128,7 @@
     word-break: normal;
     white-space: normal;
     margin: 5px 5px 10px 0;
+    color: #ffffff;
 }
 
 .block_timetable .events .item.past {

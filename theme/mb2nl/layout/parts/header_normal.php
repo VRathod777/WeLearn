@@ -53,9 +53,10 @@ $html .= $OUTPUT->standard_top_of_body_html();
 $html .= theme_mb2nl_acsb_block();
 $html .= theme_mb2nl_loading_screen();
 $html .= $OUTPUT->theme_part('sliding_panel');
-$html .= '<div class="page-outer position-relative' . theme_mb2nl_bsfcls(1, 'column') . '" id="page"' .
-theme_mb2nl_ajax_data_atts() . '>';
-$html .= '<header id="main-header" style="' . theme_mb2nl_main_menu_style() . '">';
+// extra header column remove
+// $html .= '<div class="page-outer position-relative' . theme_mb2nl_bsfcls(1, 'column') . '" id="page"' .theme_mb2nl_ajax_data_atts() . '>';
+$html .= '<div class="page-outer position-relative" id="page"' .theme_mb2nl_ajax_data_atts() . '>';
+$html .= '<header id="main-header" class="pagelayout-b d-flex flex-column" style="' . theme_mb2nl_main_menu_style() . '">';
 $html .= theme_mb2nl_notice('top');
 
 if (theme_mb2nl_header_content_pos() == 2) {
@@ -94,12 +95,13 @@ if ($stickynav == 3) {
 }
 
 $html .= '<div id="master-header">';
-$html .= '<div class="master-header-inner">';
+$html .= '<div class="master-header-inner pagelayout-b d-flex flex-column">';
 $html .= '<div class="container-fluid">';
 $html .= '<div class="row">';
+
 $html .= '<div class="col-md-12">';
 $html .= '<div class="flexcols">';
-$html .= $OUTPUT->theme_part('logo');
+// $html .= $OUTPUT->theme_part('logo');
 
 if (!theme_mb2nl_is_tgsdb()) {
     $html .= theme_mb2nl_site_menu();

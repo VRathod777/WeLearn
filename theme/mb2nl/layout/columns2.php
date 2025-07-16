@@ -30,6 +30,8 @@ $gl0bmb2blogpost = 0;
 
 echo $OUTPUT->doctype();
 echo $OUTPUT->theme_part('head');
+echo '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">';
+
 echo $OUTPUT->theme_part('header');
 
 if ($courselayout = theme_mb2nl_course_layout()) {
