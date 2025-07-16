@@ -66,6 +66,7 @@ if (theme_mb2nl_theme_setting($PAGE, 'fsmodnav')) {
 }
 
 $html .= '<div id="page-content" class="h-100' . theme_mb2nl_bsfcls(1, 'column') . '">';
+
 $html .= '<div class="content-a bg-white">';
 
 if (theme_mb2nl_theme_setting($PAGE, 'secnav')) {

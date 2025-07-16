@@ -3,7 +3,7 @@
 
 .tgsdb {
 
-    --tgsdb_widthab: 340px;
+    --tgsdb_widthab: 400px;
     --tgsdb_width: var(--tgsdb_widtha);
 
     --tgsdb_linksc: #fff;
@@ -12,7 +12,7 @@
     --tgsdb_widthb: calc(var(--tgsdb_widthab) - var(--tgsdb_widtha));
 
     &.tgsdbb_open {
-        --tgsdb_width: var(--tgsdb_widthab);
+        // --tgsdb_width: var(--tgsdb_widthab);
     }
 
     --tgsdb_cheight: var(--headerh);

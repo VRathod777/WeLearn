@@ -56,7 +56,9 @@ $html .= $OUTPUT->theme_part('sliding_panel');
 // extra header column remove
 // $html .= '<div class="page-outer position-relative' . theme_mb2nl_bsfcls(1, 'column') . '" id="page"' .theme_mb2nl_ajax_data_atts() . '>';
 $html .= '<div class="page-outer position-relative" id="page"' .theme_mb2nl_ajax_data_atts() . '>';
-$html .= '<header id="main-header" class="pagelayout-b d-flex flex-column" style="' . theme_mb2nl_main_menu_style() . '">';
+// $html .= '<header id="main-header" class="pagelayout-b d-flex flex-column" style="' . theme_mb2nl_main_menu_style() . '">';
+// for the left sidebar fix 
+$html .= '<header id="main-header" class=" " style="' . theme_mb2nl_main_menu_style() . '">';
 $html .= theme_mb2nl_notice('top');
 
 if (theme_mb2nl_header_content_pos() == 2) {
@@ -185,6 +187,7 @@ $html .= '</header><!-- end #main-header -->';
 $html .= '<div class="pagelayout' . theme_mb2nl_bsfcls(1, 'row') . '">';
 $html .= theme_mb2nl_tgsdb();
 $html .= '<div class="pagelayout-b' . theme_mb2nl_bsfcls(1, 'column') . '">';
+// $html .= '<div class="' . theme_mb2nl_bsfcls(1, 'column') . '">';
 $html .= '<div class="pagelayout-content' . theme_mb2nl_bsfcls(1, 'column') . '">';
 $html .= !$enrolmentpage ? $OUTPUT->theme_part('page_header') : '';
 $html .= '<div class="page-b">';
