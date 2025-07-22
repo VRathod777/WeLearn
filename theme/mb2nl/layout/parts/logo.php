@@ -34,7 +34,7 @@ $linktarget = isset($clogolink[1]) ? ' target="_blank"' : '';
 $label = theme_mb2nl_theme_setting($PAGE, 'clogotext') ? theme_mb2nl_theme_setting($PAGE, 'clogotext') : $SITE->fullname;
 $html = '';
 
-$html .= '<div class="logo-wrap">';
+$html .= '<div class="logo-wrap" style=" margin-left: -8px;">';
 $html .= '<div class="main-logo">';
 $html .= '<a href="' . $url . '" aria-label="' . $label . '"' . $linktarget . '>';
 

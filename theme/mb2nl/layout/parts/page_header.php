@@ -57,49 +57,49 @@ $catcolor = theme_mb2nl_cat_color_attr($cpcatcolor) ? ' style="' . theme_mb2nl_c
 
 $html = '';
 
-// $html .= '<div id="page-header" class="' . $cls . '"' . $catcolor . '>';
+$html .= '<div id="page-header" class="' . $cls . '"' . $catcolor . '>';
 
 if ($bgimg) {
     $html .= '<div class="page-header-img lazy" data-bg="' . $bgimg . '"></div>';
 }
 
 $html .= '<div class="inner">';
-$html .= '<div class="container-fluid">';
+$html .= '<div class="container p-3">';
 $html .= '<div class="row">';
-// $html .= '<div class="col-md-12">';
-// $html .= '<div class="page-heading flexcols">';
-// $html .= '<div class="page-header-left position-relative">';
-// $html .= '<h1 class="heding h2' . $headingcls . '">';
+$html .= '<div class="col-md-12">';
+$html .= '<div class="page-heading flexcols">';
+$html .= '<div class="page-header-left position-relative">';
+$html .= '<h1 class="heding h2' . $headingcls . '">';
 
-// if ($headingurl) {
-//     $html .= '<a class="d-inline-block w-100" href="' . $headingurl . '" tabindex="-1">';
-//     $html .= theme_mb2nl_is_course() ? '<span class="course-backtext">' . get_string('course') . '</span> ' : '';
-//     $html .= theme_mb2nl_page_title();
-//     $html .= '</a>';
-// } else {
-//     $html .= theme_mb2nl_page_title();
-// }
+if ($headingurl) {
+    $html .= '<a class="d-inline-block w-100" href="' . $headingurl . '" tabindex="-1">';
+    $html .= theme_mb2nl_is_course() ? '<span class="course-backtext">' . get_string('course') . '</span> ' : '';
+    $html .= theme_mb2nl_page_title();
+    $html .= '</a>';
+} else {
+    $html .= theme_mb2nl_page_title();
+}
 
-// $html .= '</h1>';
+$html .= '</h1>';
 $html .= '</div>';
-// $html .= '<div class="page-header-right position-relative">';
+$html .= '<div class="page-header-right position-relative">';
 
-// if (!theme_mb2nl_theme_setting($PAGE, 'coursepanel') && ($coursemenu || $modmenu || theme_mb2nl_turnediting_button())) {
-//     $html .= $coursemenu . $modmenu;
-//     $html .= theme_mb2nl_turnediting_button();
-// } else {
-//     $html .= theme_mb2nl_panel_link();
-//     $html .= theme_mb2nl_turnediting_button();
-// }
+if (!theme_mb2nl_theme_setting($PAGE, 'coursepanel') && ($coursemenu || $modmenu || theme_mb2nl_turnediting_button())) {
+    $html .= $coursemenu . $modmenu;
+    $html .= theme_mb2nl_turnediting_button();
+} else {
+    $html .= theme_mb2nl_panel_link();
+    $html .= theme_mb2nl_turnediting_button();
+}
 
-// $html .= '</div>';
-// $html .= '</div>';
-// $html .= '</div>';
-// $html .= '</div>';
-// $html .= '</div>';
 $html .= '</div>';
-// $html .= ($PAGE->pagetype !== 'site-index' && $headerl === 'modern') ? $OUTPUT->theme_part('page_breadcrumb') : '';
-// $html .= '</div>';
+$html .= '</div>';
+$html .= '</div>';
+$html .= '</div>';
+$html .= '</div>';
+$html .= '</div>';
+$html .= ($PAGE->pagetype !== 'site-index' && $headerl === 'modern') ? $OUTPUT->theme_part('page_breadcrumb') : '';
+$html .= '</div>';
 
 $html .= ($PAGE->pagetype !== 'site-index' && $headerl === 'classic') ? $OUTPUT->theme_part('page_breadcrumb') : '';
 $html .= $secnav ? $OUTPUT->theme_part('page_secnav') : '';

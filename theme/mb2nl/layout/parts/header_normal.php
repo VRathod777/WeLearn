@@ -97,13 +97,15 @@ if ($stickynav == 3) {
 }
 
 $html .= '<div id="master-header">';
-$html .= '<div class="master-header-inner pagelayout-b d-flex flex-column">';
-$html .= '<div class="container-fluid">';
+// $html .= '<div class="master-header-inner pagelayout-b d-flex flex-column">'; //remove  extra left margin
+$html .= '<div class="master-header-inner  d-flex flex-column">';
+// $html .= '<div class="container-fluid">';
+$html .= '<div class="container">';
 $html .= '<div class="row">';
 
 $html .= '<div class="col-md-12">';
 $html .= '<div class="flexcols">';
-// $html .= $OUTPUT->theme_part('logo');
+$html .= $OUTPUT->theme_part('logo'); // navbar logo not set
 
 if (!theme_mb2nl_is_tgsdb()) {
     $html .= theme_mb2nl_site_menu();

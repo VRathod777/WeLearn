@@ -305,7 +305,7 @@ function theme_mb2nl_tgsdb_nav() {
     $items = theme_mb2nl_tgsdb_navitems();
 
     // $output .= '<div class="sidebar-tabs-list position-relative ' . theme_mb2nl_bsfcls(1, 'column', 'center') . '" style="background-color: #ffff;">';
-    $output .= '<div class="sidebar" style="background-color: #ffff; padding-top: 5px; padding-bottom: 5px;">';
+    $output .= '<div class="sidebar" style="background-color: #ffff; padding-top: 5px; padding-bottom: 4px;">';
     // sidebarlogoupdate Add the logo before the buttons
     $logo = theme_mb2nl_theme_setting($PAGE, 'logo');
     if (!empty($logo)) {

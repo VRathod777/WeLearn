@@ -6,7 +6,7 @@
     position: relative;
 
     > .inner {
-        padding: var(--mb2-pb-hspace) 0;
+        // padding: var(--mb2-pb-hspace) 0; // extra padding main header
 
         @media only screen and (max-width: $wdmediumdevice){
             padding: .9rem 0;

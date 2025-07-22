@@ -31,7 +31,7 @@ $headerl = theme_mb2nl_theme_setting($PAGE, 'headerl');
 $html = '';
 
 $html .= '<div class="page-breadcrumb position-relative breadcrumb_' . $headerl . '">';
-$html .= '<div class="container-fluid">';
+$html .= '<div class="container">';
 $html .= '<div class="row">';
 $html .= '<div class="col-md-12">';
 $html .= '<div class="flexcols">';
