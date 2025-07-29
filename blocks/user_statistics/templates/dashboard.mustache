@@ -1,24 +1,38 @@
 <div class="user_statistics">
-<div class="dashboard-metrics">
-    <div class="card blue">
-        <div class="count">{{totalstudents}}</div>
+  <div class="dashboard-metrics">
+
+    {{^isstudent}} 
+      <div class="card">
+        <div class="count"><i class="bi bi-people-fill me-1"></i> {{totalstudents}}</div>
         <div class="label">{{#str}} totalstudents, block_user_statistics {{/str}}</div>
-    </div>
-    <div class="card orange">
-        <div class="count">{{newstudents}}</div>
+      </div>
+      <div class="card">
+        <div class="count"><i class="bi bi-person-plus-fill me-1"></i> {{newstudents}}</div>
         <div class="label">{{#str}} newstudents, block_user_statistics {{/str}}</div>
+      </div>
+    {{/isstudent}}
+
+    <div class="card">
+      <div class="count"><i class="bi bi-book-fill me-1"></i> {{totalcourses}}</div>
+      <div class="label">{{#str}} totalcourses, block_user_statistics {{/str}}</div>
     </div>
-    <div class="card purple">
-        <div class="count">{{totalcourses}}</div>
-        <div class="label">{{#str}} totalcourses, block_user_statistics {{/str}}</div>
+
+    {{#isstudent}}
+      <div class="card">
+        <div class="count"><i class="bi bi-journal-text me-1"></i> {{mycourses}}</div>
+        <div class="label">{{#str}} mycourses, block_user_statistics {{/str}}</div>
+      </div>
+    {{/isstudent}}
+
+    <div class="card">
+      <div class="count"><i class="bi bi-check2-circle me-1"></i> {{completedcourses}}</div>
+      <div class="label">{{#str}} completedcourses, block_user_statistics {{/str}}</div>
     </div>
-    <div class="card green">
-        <div class="count">{{completedcourses}}</div>
-        <div class="label">{{#str}} completedcourses, block_user_statistics {{/str}}</div>
+
+    <div class="card">
+      <div class="count"><i class="bi bi-award-fill me-1"></i> {{certificates}}</div>
+      <div class="label">{{#str}} certificates, block_user_statistics {{/str}}</div>
     </div>
-    <div class="card red">
-        <div class="count">{{certificates}}</div>
-        <div class="label">{{#str}} certificates, block_user_statistics {{/str}}</div>
-    </div>
-</div>
+
+  </div>
 </div>
