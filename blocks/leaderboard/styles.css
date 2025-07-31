@@ -8,16 +8,16 @@
 
 .badge-leaderboard th,
 .badge-leaderboard td {
-    border: 1px solid #ccc;
+   border-bottom: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
 
 .badge-leaderboard th {
-    background-color: #f2f2f2;
+    background-color: #f9c916;
     font-weight: bold;
 }
 
-.badge-leaderboard tr:nth-child(even) {
+/* .badge-leaderboard tr:nth-child(even) {
     background-color: #fafafa;
-}
+} */

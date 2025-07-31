@@ -1,0 +1,46 @@
+/* blocks/user_management/styles.css */
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #f9c916;
+    font-weight: bold;
+}
+
+.pagination {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.ajax-page-link {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 2px;
+    background: #eee;
+    text-decoration: none;
+    color: #000;
+    border-radius: 4px;
+}
+
+.ajax-page-link:hover {
+    background: #ddd;
+}
+
+.current-page {
+    padding: 5px 10px;
+    margin: 0 2px;
+    background: #282a74;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
