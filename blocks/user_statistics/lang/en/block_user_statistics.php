@@ -1,8 +1,9 @@
 
 <?php
 $string['pluginname'] = 'User Statistics';
-$string['totalstudents'] = 'Total Students';
-$string['newstudents'] = 'New Students (30d)';
+$string['totalstudents'] = 'Total Users'; //Total Students
+$string['newstudents'] = 'New Users (30d)'; //New Students (30d)
+$string['mycourses'] = 'My Course';
 $string['totalcourses'] = 'Total Courses';
 $string['completedcourses'] = 'Courses Completed';
 $string['certificates'] = 'Certificates Earned';

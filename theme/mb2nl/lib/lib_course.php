@@ -1973,6 +1973,7 @@ function theme_mb2nl_course_tabs($layout = 'ver', $content = true) {
     $ratingstars = '';
     $courserating = '';
     $reviewsummary = '';
+error_log('🧪 $courserating: ' . print_r($courserating, true));
 
     if ($reviews) {
         if (!class_exists('Mb2reviewsHelper')) {
@@ -2098,7 +2099,7 @@ function theme_mb2nl_course_tabs($layout = 'ver', $content = true) {
             $output .= '</li>'; // ...course-nav-list-csection
         }
     }
-
+    
     if ($reviewsummary || $canrate || $ratealready) {
         $link = new moodle_url('/course/view.php', ['id' => $urlid, 'ctab' => 'reviews']);
         $activecls = $urlctab === 'reviews' ? ' active' : '';
@@ -2106,6 +2107,9 @@ function theme_mb2nl_course_tabs($layout = 'ver', $content = true) {
         $output .= '<a href="' . $link . '" class="course-nav-button' . $activecls . theme_mb2nl_bsfcls(2, '', '', 'center') . '">';
         $output .= '<div class="item-text">' . get_string('reviews', 'theme_mb2nl') . '</div>';
         $output .= $courserating ? $ratingstars . '<span class="course-rating">' . $courserating . '</span>' : '';
+    
+    
+    
         $output .= '</a>';
         $output .= '</li>'; // ...course-nav-list-reviews
     }

@@ -4,7 +4,7 @@
 .fsmod-wrap {
     display: flex;
     flex-flow: wrap;
-    position: fixed;
+    // position: fixed;
     left: 0;
     top: var(--tgsdb_widtha);
     right: 0;
@@ -41,11 +41,12 @@
     .mod_introbox {
         padding: 0;
     }
-
+// for the course pageview center
     .content-a {
         flex: 1;
-        padding: 3rem;
-        margin: 0 15px;
+        padding: 1rem;
+        margin: 65px 65px 65px 206px;
+        // margin: 0 15px;
         @include mb2_box_shadow(0 3px 6px, rgba(0,0,0,.07));
 
         @media only screen and (max-width: $wdmediumdevice) {
@@ -130,7 +131,8 @@
     }
 
     .fsmod-header-inner {
-        height: var(--tgsdb_widtha);
+        // height: var(--tgsdb_widtha);
+        height: 67px;
     }
 
     

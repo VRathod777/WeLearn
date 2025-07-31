@@ -40,7 +40,7 @@ $PAGE->requires->js_call_amd('theme_mb2nl/course', 'sectionsToggle');
 $html = '';
 
 $html .= '<div id="main-content" class="course-layout">';
-$html .= '<div class="container-fluid">';
+$html .= '<div class="container">';
 $html .= '<div id="theme-main-content" class="row">';
 $html .= '<section class="col-lg-9 content-col' . $contentcol . '">';
 $html .= '<div id="region-main">';

@@ -84,7 +84,8 @@ if (!$clpage) {
 }
 
 $html .= '<div id="main-content">';
-$html .= '<div class="container-fluid">';
+// for the container fluid
+$html .= '<div class="container">';
 $html .= '<div id="theme-main-content" class="row">';
 $html .= '<section class="content-col ' . $contentcol . '">';
 $html .= '<div id="region-main">';

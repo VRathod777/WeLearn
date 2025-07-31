@@ -46,7 +46,7 @@ $PAGE->requires->js_call_amd('theme_mb2nl/modalsections', 'init');
 $html = '';
 
 $html .= '<div id="main-content" class="course-layout">';
-$html .= '<div class="container-fluid">';
+$html .= '<div class="container">';   //extra margin remove
 $html .= '<div id="theme-main-content" class="row">';
 $html .= '<section class="content-col' . $contentcol . '">';
 $html .= '<div id="region-main">';

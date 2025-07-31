@@ -150,7 +150,8 @@ $output .= '<div class="sidebar-content position-relative w-100">';
     $output .= '<div class="sidebar-tabs">';
     
     $output .= theme_mb2nl_tgsdb_nav();
-    $output .= '<div class="sidebar-tabs-content position-absolute h-100">';
+    // $output .= '<div class="sidebar-tabs-content position-absolute h-100">';
+    $output .= '<div class="sidebar-tabs-content h-100">';
     $output .= theme_mb2nl_tgsdbtab_button();
 
     if ($chome) {
@@ -244,11 +245,11 @@ function theme_mb2nl_tgsdbtab_button() {
     $ariacontrols = $expanded === 'true' ? ' aria-controls="tgsdb_' . theme_mb2nl_user_preference('mb2_tgsdbactv', 'none') . '"' :
     '';
 
-    $output .= '<button type="button" class="tgsdbb_toggle p-0' . theme_mb2nl_bsfcls(2, '', 'center', 'center') .
-    '" aria-expanded="' . $expanded . '" title="' . get_string('tgsdbclosetab', 'theme_mb2nl') . '"' . $ariacontrols . '>';
-    $output .= '<span class="sr-only">' . get_string('tgsdbclosetab', 'theme_mb2nl') . '</span>';
-    $output .= '<i class="bi bi-chevron-double-left"></i>';
-    $output .= '</button>';
+    // $output .= '<button type="button" class="tgsdbb_toggle p-0' . theme_mb2nl_bsfcls(2, '', 'center', 'center') .
+    // '" aria-expanded="' . $expanded . '" title="' . get_string('tgsdbclosetab', 'theme_mb2nl') . '"' . $ariacontrols . '>';
+    // $output .= '<span class="sr-only">' . get_string('tgsdbclosetab', 'theme_mb2nl') . '</span>';
+    // $output .= '<i class="bi bi-chevron-double-left"></i>';
+    // $output .= '</button>';
 
     return $output;
 }
@@ -303,13 +304,13 @@ function theme_mb2nl_tgsdb_nav() {
     $active = theme_mb2nl_tgsdb_active();
     $items = theme_mb2nl_tgsdb_navitems();
 
-    $output .= '<div class="sidebar-tabs-list position-relative ' . theme_mb2nl_bsfcls(1, 'column', 'center') . '" style="background-color: #ffff;">';
-
+    // $output .= '<div class="sidebar-tabs-list position-relative ' . theme_mb2nl_bsfcls(1, 'column', 'center') . '" style="background-color: #ffff;">';
+    $output .= '<div class="sidebar" style="background-color: #ffff; padding-top: 5px; padding-bottom: 4px;">';
     // sidebarlogoupdate Add the logo before the buttons
     $logo = theme_mb2nl_theme_setting($PAGE, 'logo');
     if (!empty($logo)) {
         $logourl = $PAGE->theme->setting_file_url('logo', 'logo');
-        $output .= '<div class="logo-container mb-2 text-center" style="background-color: #ffff; padding: 17px 7px 9px 6px;">';
+        $output .= '<div class="logo-container mb-2 text-center" style=" padding: 17px 7px 9px 6px;">';
         $output .= '<img src="' . $logourl . '" alt="Logo" class="tgsdb-logo" style="max-height: 50px;" />';
         $output .= '</div>';
     }
@@ -321,8 +322,8 @@ function theme_mb2nl_tgsdb_nav() {
 
         $sctivecls = $active === $item['id'] ? ' active' : '';
         $expanded = $active === $item['id'] ? 'true' : 'false';
-
-        $output .= '<button type="button" class="themereset tgsdb-btn p-0 ml-auto mr-auto' .
+// in course view page info and section
+        $output .= '<button type="button" class="themereset tgsdb-btn p-0 ml-4 mr-auto' .
             theme_mb2nl_bsfcls(2, 'column', 'center', 'center') . $sctivecls . '" data-id="' . $item['id'] .
             '" aria-controls="tgsdb_' . $item['id'] . '" aria-expanded="' . $expanded . '">';
         $output .= $item['icon'];

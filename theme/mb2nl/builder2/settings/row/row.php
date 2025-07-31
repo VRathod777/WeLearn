@@ -196,6 +196,7 @@ function mb2_shortcode_mb2pb_row ($atts, $content = null) {
     $output .= '<div class="section-inner mb2-pb-row-inner">';
     $output .= '<div class="row-topgap w-100 fwbold upper1"></div>';
     $output .= '<div class="container-fluid">';
+    
 
     $output .= '<div class="row mb2-pb-sortable-columns">';
     $output .= mb2_do_shortcode($content);

@@ -39,3 +39,4 @@ if ($courselayout = theme_mb2nl_course_layout()) {
 } else {
     include($CFG->dirroot . theme_mb2nl_themedir() . '/mb2nl/layout/columns2_normal.php');
 }
+

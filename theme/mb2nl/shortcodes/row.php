@@ -209,7 +209,7 @@ function mb2_shortcode_row ($atts, $content = null) {
     $output .= '<div ' . $idattr . 'class="mb2-pb-row' . $cls . '"' . $wrapstyle . $databgimage . '>';
     $output .= '<div class="section-inner mb2-pb-row-inner">';
     $output .= '<div class="row-topgap w-100"></div>';
-    $output .= '<div class="container-fluid">';
+    $output .= '<div class="container mr-4 pl-5">';  //for extra margin left 
     $output .= '<div class="row">';
     $output .= mb2_do_shortcode($content);
     $output .= '</div>';
