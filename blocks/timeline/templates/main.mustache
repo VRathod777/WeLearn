@@ -23,25 +23,26 @@
     {}
 }}
 
-<div id="block-timeline-{{uniqid}}-{{timelineinstanceid}}" class="block-timeline" data-region="timeline">
-    <div class="p-0 px-2">
-        <div class="row no-gutters">
-            <div class="mr-2 mb-1">
+<div id="block-timeline-{{uniqid}}-{{timelineinstanceid}}" class="block-timeline bg-white rounded-3 shadow-sm" data-region="timeline" >
+    <div class="px-3 py-2">
+        <div class="row align-items-center gx-2 gy-2 p-1" >
+            <div class="col-auto">
                 {{> block_timeline/nav-day-filter }}
             </div>
-            <div class="mr-auto mb-1">
+            <div class="col-auto">
                 {{> block_timeline/nav-view-selector }}
             </div>
-            <div class="col-md-6 col-sm-8 col-12 mb-1 d-flex justify-content-end nav-search">
+            <div class="col d-flex justify-content-end">
                 {{> block_timeline/nav-search }}
             </div>
         </div>
-        <div class="pb-3 px-2 border-bottom"></div>
+    
     </div>
-    <div class="p-0">
+    <div class="px-3 ">
         {{> block_timeline/view }}
     </div>
 </div>
+
 {{#js}}
 require(
 [

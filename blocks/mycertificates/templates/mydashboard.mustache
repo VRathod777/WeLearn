@@ -35,20 +35,19 @@
             }
         ]
     }
-}}
-{{#hascertificates}}
+}}{{#hascertificates}}
     {{#coursescertificates}}
-        <div class="card mb-3">
+        <div class="course-card">
             <div class="card-body">
-                <h5 class="card-title">{{{ fullname }}}</h5>
-                
+                <h5 class="course-title">{{{ fullname }}}</h5>
+
                 {{#certificates}}
-                    <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="course-row d-flex justify-content-between align-items-center mb-2">
                         <div class="d-flex align-items-center gap-2">
                             {{#pix}} icon, {{{module}}} {{/pix}}
-                            <span>{{{name}}}</span>
+                            <span class="cert-name">{{{name}}}</span>
                         </div>
-                        <a class="btn btn-sm btn-primary" href="{{ downloadurl }}" target="_blank">
+                        <a class="btn-view" href="{{ downloadurl }}" target="_blank">
                             {{#str}}download, core{{/str}}
                         </a>
                     </div>

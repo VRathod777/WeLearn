@@ -1,0 +1,41 @@
+.course-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    
+}
+
+.course-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #282a74;
+    margin-bottom: 12px;
+}
+
+.cert-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn-view {
+    background-color: #282A74;
+    color: white;
+    font-size: 16px;
+    padding: 6px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-view:hover {
+    /* background-color: #1a2f40; */
+    border: 3px solid;
+}
