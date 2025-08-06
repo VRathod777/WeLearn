@@ -18,8 +18,8 @@
  * My Certificates block renderer.
  *
  * @package    block_mycertificates
- * @copyright  2020 Willian Mano - http://conecti.me
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2025 Vikas Rathod
+ * @license   
  */
 
 namespace block_mycertificates\output;

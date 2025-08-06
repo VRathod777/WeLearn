@@ -18,16 +18,11 @@
  * My Certificates block definition
  *
  * @package    block_mycertificates
- * @copyright  2020 Willian Mano - http://conecti.me
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  2025 Vikas Rathod -
+ * @license    
  */
 
-/**
- * My Certificates block definition class
- *
- * @copyright  2020 Willian Mano - http://conecti.me
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+
 class block_mycertificates extends block_base {
 
     /**

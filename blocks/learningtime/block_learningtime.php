@@ -10,21 +10,21 @@ class block_learningtime extends block_base {
         if ($this->content !== null) {
             return $this->content;
         }
-       
-        // Filter dropdown selection (default: 6months)
+
+        // Get filter (default: 6 months)
         $filter = optional_param('lt_filter', '6months', PARAM_ALPHA);
 
-        // Determine time range
+        // Set time filter based on selected value
         if ($filter === '1year') {
             $timefilter = time() - (365 * 24 * 60 * 60);
         } else if ($filter === 'all') {
             $timefilter = 0;
         } else {
             $filter = '6months';
-            $timefilter = time() - (180 * 24 * 60 * 60);   #days hr min sec
+            $timefilter = time() - (180 * 24 * 60 * 60);
         }
 
-        // SQL to get daily views in time range
+        // SQL to get user view log data
         $sql = "SELECT FROM_UNIXTIME(timecreated, '%Y-%m-%d') AS day,
                        COUNT(*) AS views
                   FROM {logstore_standard_log}
@@ -41,39 +41,45 @@ class block_learningtime extends block_base {
         $sql .= " GROUP BY day ORDER BY day";
 
         $logs = $DB->get_records_sql($sql, $params);
-// print_r($logs);
 
-
+        // Prepare chart data
         $labels = [];
         $values = [];
 
         foreach ($logs as $log) {
             $labels[] = $log->day;
-            $values[] = min(180, $log->views * 2); // 2 mins per view, max 60        
+            $values[] = min(180, $log->views * 2); // cap at 180 minutes per day
         }
 
-        // Create chart
+        // Create line chart
         $chart = new \core\chart_line();
         $series = new \core\chart_series(get_string('learningtime', 'block_learningtime'), $values);
         $chart->add_series($series);
         $chart->set_labels($labels);
 
-        // Create filter dropdown
-        $output = '<form method="get">';
-        $output .= '<select name="lt_filter" onchange="this.form.submit()">';
-        $output .= '<option value="6months"' . ($filter == '6months' ? ' selected' : '') . '>Last 6 Months</option>';
-        $output .= '<option value="1year"' . ($filter == '1year' ? ' selected' : '') . '>Last 1 Year</option>';
-        $output .= '<option value="all"' . ($filter == 'all' ? ' selected' : '') . '>All Time</option>';
-        $output .= '</select>';
+        // Create Bootstrap button filters
+        $output = '<form method="get" class="d-flex gap-2 mb-2 p-1" style="justify-content: flex-end;">';
+        $filters = [
+            '6months' => 'Last 6 Months',
+            '1year' => 'Last 1 Year',
+            'all' => 'All Time'
+        ];
+
+        foreach ($filters as $value => $label) {
+            $isactive = ($filter == $value) ? 'btn-sm' : 'btn-outline-Secondary';
+            $output .= '<button type="submit" name="lt_filter" value="' . $value . '" class="btn btn-sm ' . $isactive . '">' . $label . '</button>';
+        }
         $output .= '</form>';
 
-    //    $output .= '<div style="display: block;box-sizing: border-box;height: 349.6px;width: 578.4px;">';
-       $output .= $OUTPUT->render($chart);
-    //    $output .= '</div>';
+        // Render chart
+        $output .= '<div class="mt-3">';
+        $output .= $OUTPUT->render($chart);
+        $output .= '</div>';
 
-        // Set block content  line bar pie  
+        // Set content
         $this->content = new stdClass();
         $this->content->text = $output;
+
         return $this->content;
     }
 }

@@ -54,8 +54,9 @@
 /* Some of the rules are specified again in more selective versions for different themes. */
 .multiblock-columns-2-parent[id^="inst"],
 .multiblock-columns-3-parent[id^="inst"] {
-    background: transparent;
-    border: transparent;
+    background: transparent !important;
+    border: none!important;
+    box-shadow: none !important;
 }
 .multiblock-columns-2-parent[id^="inst"] .multiblock > .container,
 .multiblock-columns-3-parent[id^="inst"] .multiblock > .container {
@@ -132,4 +133,7 @@
 .multiblock-carousel-bootstrap3 .carousel-control-next {
     right: 0;
     left: auto;
+}
+.block_multiblock .block .card  .multiblock-columns-2-parent{
+
 }
