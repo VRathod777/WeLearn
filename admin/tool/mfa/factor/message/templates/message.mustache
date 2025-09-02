@@ -1,0 +1,65 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template factor_message/message
+
+    Template for message body sent to users.
+
+    Example context (json):
+    {
+        "message": "Your verification code is 123456.",
+        "ip": "The IP was 127.0.0.1",
+        "geoinfo": "Request originated from Brisbane, Australia",
+        "ua": "The user agent is Firefox 70",
+        "linkstring": "If this wasn't you, click here"
+    }
+}}
+<div style="font-family: Arial, sans-serif; font-size: 18px">
+    {{#logo}}
+        <table style="width: 600px; margin-bottom: 10px;">
+            <tr>
+                <td></td>
+                <td style="text-align: right;">
+                    <img src="{{{logo}}}" alt="{{sitename}}" />
+                </td>
+            </tr>
+        </table>
+    {{/logo}}
+    <p>{{#str}} message:greeting, factor_message, {{name}}{{/str}}</p>
+    <p>
+        {{#str}} message:message, factor_message, {"sitename":{{#quote}}{{sitename}}{{/quote}}, "siteurl":{{#quote}}{{siteurl}}{{/quote}} }{{/str}}
+    </p>
+    <h2 style="letter-spacing: 5px;">{{code}}</h2>
+    <p>
+        {{#str}} message:validity, factor_message, {{validity}}{{/str}}
+        <br/>
+        {{{authlink}}}
+    </p>
+    <br/>
+    <p>{{{revokelink}}}</p>
+    <br/>
+    <div style="font-family: Arial, sans-serif; font-size: 12px">
+        <p><strong>{{#str}} message:ipinfo, factor_message {{/str}}</strong></p>
+        <p>{{#str}} message:originatingip, factor_message, {{ip}} {{/str}}</p>
+        {{#geocountry}}
+            <p> {{#str}} message:geoinfo, factor_message {{/str}}{{#geocity}}{{geocity}},{{/geocity}} {{geocountry}}</p>
+        {{/geocountry}}
+        <p><strong>{{#str}} message:uadescription, factor_message {{/str}}</strong></p>
+        <p>{{ua}}</p>
+        <p>{{{linkstring}}}</p>
+    </div>
+</div>
